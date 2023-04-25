@@ -1,12 +1,28 @@
 #box parcel service program
 
-liczba_paczek=input("Ile paczek chcesz wyslac?    ")
-liczba_paczek=int(liczba_paczek)
+liczba_przesylek=input("Ile przesylek chcesz wyslac?    ")
+liczba_przesylek=int(liczba_przesylek)
+paczka = 0
+paczka = int(paczka)
 
-for przesylka in range(liczba_paczek):
-    waga_przesylki=int(input("Podaj wage przesylki min 1kg - max 10kg:   "))
-    if waga_przesylki < 1 or waga_przesylki > 10:
-        print("Wyslano wskazane przesylki bez ostatniej")
+for waga_przesylki in range(liczba_przesylek):
+    waga_przesylki = int(input("Podaj wage przesylki min 1kg - max 10kg:   "))
+    if waga_przesylki <1 or waga_przesylki >10:
+        print("Twoje przesylki wyslano, poza ostatnia")
         break
-    while waga_przesylki >= 20:
-        waga_przesylki=int(input("Podaj wage przesylki min 1kg - max 10kg:   "))
+
+    elif waga_przesylki >1 or waga_przesylki <10:
+         paczka += waga_przesylki
+         print(paczka)
+
+    if paczka > 20:
+        print("cos")
+        break
+
+
+
+
+
+
+
+
