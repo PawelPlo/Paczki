@@ -11,6 +11,10 @@ paczka = int(paczka)
 poj_pudelka = 20
 poj_pudelka = int(poj_pudelka)
 wagi_pudelek = []
+laczna_waga_paczek = 0
+laczna_waga_paczek = int(laczna_waga_paczek)
+puste_kilogramy = 0
+puste_kilogramy = int(puste_kilogramy)
 
 
 for waga_przesylki in range(liczba_przesylek):
@@ -18,8 +22,9 @@ for waga_przesylki in range(liczba_przesylek):
     if waga_przesylki <1 or waga_przesylki >10:
         print("Zla waga przesylki, koniec przyjmowania")
         break
-    if waga_przesylki >1 or waga_przesylki <10:
+    if waga_przesylki >=1 or waga_przesylki <=10:
         paczka += waga_przesylki
+        laczna_waga_paczek += waga_przesylki
         nr_przesylki = nr_przesylki + 1
         if paczka > 20:
             paczka -= waga_przesylki
@@ -41,9 +46,12 @@ for waga_przesylki in range(liczba_przesylek):
         continue
 pudelko = pudelko + 1
 wagi_pudelek.append(paczka)
+
 print("wyslano 1 pudelko o wadze {}".format(paczka))
 print("W wyslanej paczce pozostalo {} wolnych kilogramow".format(poj_pudelka-paczka))
 print("Wyslano {} sztuk pudelek o wadze {} kg".format(pudelko, wagi_pudelek))
+print("Wyslano w sumie {} kg".format(laczna_waga_paczek))
+print("Wyslano pustych {} pustych kilogramow".format(pudelko*poj_pudelka-laczna_waga_paczek))
 
 
 #   print("Do pierwszej paczki zapakowano {} kg, nie wykorzystano {} kg".format(paczka))
