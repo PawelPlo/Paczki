@@ -3,20 +3,15 @@
 liczba_przesylek=input("Ile przesylek chcesz wyslac?    ")
 liczba_przesylek=int(liczba_przesylek)
 nr_przesylki=1
-nr_przesylki=int(nr_przesylki)
 pudelko = 0
-pudelko = int(pudelko)
 paczka = 0
-paczka = int(paczka)
 poj_pudelka = 20
-poj_pudelka = int(poj_pudelka)
 waga_paczki = []
 laczna_waga_paczek = 0
-laczna_waga_paczek = int(laczna_waga_paczek)
 najlzejsza_paczka = 0
-najlzejsza_paczka = int(najlzejsza_paczka)
+waga_najlzejszej_paczki = 0
 nr_najlzejszej_paczki = 0
-nr_najlzejszej_paczki = int(nr_najlzejszej_paczki)
+
 
 for waga_przesylki in range(liczba_przesylek):
     waga_przesylki = int(input("Podaj wage przesylki nr {} min 1kg - max 10kg:   ".format(nr_przesylki)))
@@ -33,9 +28,10 @@ for waga_przesylki in range(liczba_przesylek):
             print("wyslano 1 paczke o wadze {}".format(paczka))
             waga_paczki.append(paczka)
             print("W wyslanej paczce pozostalo {} wolnych kilogramow".format(poj_pudelka-paczka))
-            if poj_pudelka-paczka>najlzejsza_paczka:
+            if poj_pudelka-paczka >= najlzejsza_paczka:
                 najlzejsza_paczka = poj_pudelka-paczka
-                nr_najlzejszej_paczki = najlzejsza_paczka
+                waga_najlzejszej_paczki = najlzejsza_paczka
+                nr_najlzejszej_paczki = nr_najlzejszej_paczki + 1
             paczka = 0 + waga_przesylki
             print("Do nastepnej paczki przeniesiono {} kg".format(paczka))
             continue
@@ -43,25 +39,27 @@ for waga_przesylki in range(liczba_przesylek):
             pudelko = pudelko + 1
             print("wyslano 1 paczke o wadze 20 kg")
             waga_paczki.append(poj_pudelka)
-            if poj_pudelka - paczka > najlzejsza_paczka:
+            if poj_pudelka - paczka >= najlzejsza_paczka:
                 najlzejsza_paczka = poj_pudelka - paczka
-                nr_najlzejszej_paczki = najlzejsza_paczka
+                waga_najlzejszej_paczki = najlzejsza_paczka
+                nr_najlzejszej_paczki = nr_najlzejszej_paczki + 1
             paczka=0
             continue
 if paczka > 0:
     pudelko = pudelko + 1
     waga_paczki.append(paczka)
-    if poj_pudelka - paczka > najlzejsza_paczka:
+    if poj_pudelka - paczka >= najlzejsza_paczka:
         najlzejsza_paczka = poj_pudelka - paczka
-        nr_najlzejszej_paczki = najlzejsza_paczka
-
+        waga_najlzejszej_paczki = najlzejsza_paczka
+        nr_najlzejszej_paczki = nr_najlzejszej_paczki + 1
 print("PODSUMOWANIE")
 print("Wyslano {} sztuk pudelek o wadze {} kg".format(pudelko, waga_paczki))
 print("Wyslano w sumie {} kg".format(laczna_waga_paczek))
 print("Wyslano {} pustych kilogramow".format(pudelko*poj_pudelka-laczna_waga_paczek))
-for najlzejsza_paczka in range(1, pudelko):
-    print("Najwiecej pustych kilogramow to {}.".format(nr_najlzejszej_paczki))
-    print("Nr najlzejszej paczki to: {}.".format(najlzejsza_paczka))
+for najlzejsza_paczka in range(1, pudelko + 1):
+    print("Najwiecej pustych kilogramow to {}.".format(waga_najlzejszej_paczki))
+    print("Nr najlzejszej paczki to: {}.".format(nr_najlzejszej_paczki))
+    break
 
 
 
